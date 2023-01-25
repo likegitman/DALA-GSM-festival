@@ -1,62 +1,74 @@
 import styles from "../styles/login.module.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+const SERVER_URL = "/api/login";
 
 function Lview() {
-  const {
-    register,
-    watch,
-    formState: { errors },
-    handleSubmit,
-  } = useForm();
+  const replace  = useNavigate();
 
-  const password = useRef();
-  password.current = watch("password");
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    //const password = e.target.password.value;
 
-  const onSubmit = (data) => {
-    console.log("data", data);
+    await axios
+      .post(SERVER_URL, { name: name, email: email}, {withCredentials: true})
+      .then((response) => {
+        console.log(response.data);
+        
+        replace(`/`);
+      }).catch((error)=>{
+        alert("로그인 오류입니다!");
+      });
   };
 
   return (
     <div className={styles.login__box}>
       <h1 className={styles.title}>DALA</h1>
       <form
-        autocomplete="off"
+        autoComplete="off"
         className={styles.login__form}
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={onSubmitHandler}
       >
         <label>이메일</label>
         <input
           type="email"
           name="email"
-          placeholder="우리 학교 이메일을 입력해주세요"
-          {...register("email", {
-            required: true,
-            pattern: /(\W|^)[\w.\-]{0,25}@(gsm.hs)\.kr(\W|$)/,
-          })}
+          placeholder="생성한 이메일을 입력해주세요"
+          pattern="(\W|^)[\w.-]{0,25}@(gsm.hs).kr(\W|$)"
+          // {...register("email", {
+          //   required: true,
+          //   pattern: /(\W|^)[\w.\-]{0,25}@(gsm.hs)\.kr(\W|$)/,
+          // })}
         />
-        {errors.email && errors.email.type === "required" && (
-          <p>이메일이 입력되지 않았습니다!</p>
+        {/* {errors.email && errors.email.type === "required" && (
+          <p className={styles.error__p}>이메일이 입력되지 않았습니다!</p>
         )}
         {errors.email && errors.email.type === "pattern" && (
-          <p>저희 학교 이메일이 아닙니다!</p>
-        )}
+          <p className={styles.error__p}>저희 학교 이메일이 아닙니다!</p>
+        )} */}
 
         <label>이름</label>
         <input
           type="text"
           name="name"
-          placeholder="이름을 입력해주세요"
-          {...register("name", { required: true, maxLength: 3 })}
+          placeholder="생성한 이름을 입력해주세요."
+          maxLength="3"
+          // {...register("password", {
+          //   required: true,
+          //   pattern:
+          //     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+          // })}
         />
-        {errors.name && errors.name.type === "required" && (
-          <p>이름이 입력되지 않았습니다!</p>
+        {/* {errors.password && errors.password.type === "required" && (
+          <p className={styles.error__p}>비밀번호가 입력되지 않았습니다!</p>
         )}
-        {errors.name && errors.name.type === "maxLength" && (
-          <p>이름을 3글자 이하로 작성해주세요!</p>
-        )}
+        {errors.password && errors.password.type === "pattern" && (
+          <p className={styles.error__p}>비밀번호 패턴을 맞춰주세요!</p>
+        )} */}
 
         <input type="submit" className={styles.login__btn} value="로그인" />
       </form>

@@ -2,12 +2,45 @@ import styles from "../styles/home.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList } from "@fortawesome/free-solid-svg-icons";
 import { faPenClip } from "@fortawesome/free-solid-svg-icons";
-import { faComment } from "@fortawesome/free-solid-svg-icons";
+// import { faComments } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
+
+const SERVER_URL_LOGIN = "/api/login";
+const SERVER_URL_LOGOUT= "/api/Login";
 
 function Hview() {
+  const [name, setName] = useState("");
+  // const [loginText, setLoginText] = useState("Login");
+  const [logined, setLogined]=useState(false);
+
+  const axiosLoginData = () => {
+      axios
+      .get(SERVER_URL_LOGIN, { withCredentials: true })
+      .then((response) => {
+        setName(response.data);
+        setLogined(true);
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  };
+
+  const axiosLogoutData=()=>{
+      axios
+      .get(SERVER_URL_LOGOUT, { withCredentials: true })
+      .then((response) => {
+        setName(response.data);
+        setLogined(true);
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  };
+
   return (
-    <div className={styles.wrap__M}>
+    <div>
       {/*Navbar Section*/}
       <nav className={styles.navbar}>
         <Link to={`/`} id={styles.navbar__logo}>
@@ -30,8 +63,18 @@ function Hview() {
             </Link>
           </li>
           <li>
-            <Link to={`/DALA/login`} className={styles.button}>
-              Login
+            <h1 className={styles.navbar__name}>{name}</h1>
+          </li>
+          <li>
+            <Link to={`/DALA/login`}>
+              { logined===false ? 
+                <button onClick={axiosLoginData} className={styles.button}>
+                  Login
+                </button>:
+                <button onClick={axiosLogoutData} className={styles.button}>
+                 Logout
+               </button>
+              }
             </Link>
           </li>
         </ul>
@@ -39,10 +82,9 @@ function Hview() {
       {/*Main Section*/}
       <section className={styles.main}>
         <div className={styles.main__sec1}>
-          <h1 className={styles.hi__text}>안녕하세요!</h1>
-          <h2 className={styles.hi__text2}>
-            GSM 홈베이스 예약 웹사이트입니다.
-          </h2>
+          <h1 className={styles.hi__text}>
+            매번 예약을 하러 1학년 교무실로 가는것 번거롭지 않으신가요?
+          </h1>
         </div>
         <div className={styles.main__sec2}>
           <h1 className={styles.gd__texth}>
@@ -74,16 +116,14 @@ function Hview() {
           </p>
           <div className={styles.circle__2}>
             <div className={styles.message__circle}>
-              <Link to={`/DALA/commu`}>
-                <FontAwesomeIcon icon={faComment} />
-              </Link>
+              <Link to={`/DALA/commu`}></Link>
             </div>
           </div>
         </div>
       </section>
       {/*Footer Section*/}
       <footer className={styles.foot}>
-        <hr class={styles.foot__border} />
+        <hr className={styles.foot__border} />
         <h1 className={styles.gd__texth3}>Developers</h1>
         <ul className={styles.role__list}>
           <li>

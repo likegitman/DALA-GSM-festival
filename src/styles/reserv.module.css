@@ -16,9 +16,9 @@ b{
 }
 
 /*Scrollbar Option*/
-.wrap__M::-webkit-scrollbar{width: 16px;}
-.wrap__M::-webkit-scrollbar-track{background-color: #fff;}
-.wrap__M::-webkit-scrollbar-thumb{
+body::-webkit-scrollbar{width: 16px;}
+body::-webkit-scrollbar-track{background-color: #fff;}
+body::-webkit-scrollbar-thumb{
     background-color: #5d2ae8;
     border-radius: 10px;
 }
@@ -65,15 +65,19 @@ b{
 }
 
 .button {
-    width: 100%;
-    height: 100%;
+    width: 125px;
+    height: 65px;
     justify-content: center;
     align-items: center;
     padding: 10px 20px;
     border-radius: 10px;
     color: #fff;
+    font-size: 1.6rem;
+    border: none;
     transition: all 0.3s ease-in;
     background-color: #2d00f4;
+    cursor: pointer;
+    font-weight: 700;
 }
 
 .button:hover {
@@ -103,6 +107,7 @@ b{
 }
 
 .time{
+    font-family: 'alarm_clock';
     width: 400px;
     height: 200px;
     background-color: #5d2ae8;
@@ -128,10 +133,9 @@ b{
 .res__space{
     position: relative;
     width: 90%;
-    height: 750px;
+    height: 3500px;
     background: #fff;
     border-radius: 20px;
-    margin: 10px 10px;
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.3);
     border: none;
     outline: none;
@@ -142,8 +146,8 @@ b{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px;
-    height: 40px;
+    width: 190px;
+    height: 48px;
     border: none;
     cursor: pointer;
     border-radius: 20px;
@@ -160,13 +164,13 @@ b{
     outline: none;
 }
 
-.cancled__btn{
+.canceled__btn{
     background-color: #eff3f7;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px;
-    height: 40px;
+    width: 200px;
+    height: 200px;
     border: none;
     cursor: pointer;
     border-radius: 20px;
@@ -182,8 +186,8 @@ b{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 150px;
-    height: 50px;
+    width: 200px;
+    height: 200px;
     border: none;
     cursor: pointer;
     border-radius: 20px;
@@ -208,13 +212,13 @@ b{
 
 .area__1 .sits__1{
     position: absolute;
-    top: 18%;
-    left: 13%;
+    top: 12%;
+    left: 14%;
 }
 .area__1 .sits__3{
     position: absolute;
-    top: 18%;
-    right: 13%;
+    top: 12%;
+    right: 14%;
 }
 
 .area__1 .sits__1 li,
@@ -241,15 +245,15 @@ b{
 
 .area__1 .sits__2 li{
     background: #eff3f7;
-    width: 95px;
-    height: 80px;
+    width: 85px;
+    height: 85px;
     border-radius: 20px;
-    margin: 25px;
+    margin: 20px 10px;
 }
 
 .area__1 .table{
     width: 230px;
-    height: 350px;
+    height: 250px;
     background: #eff3f7;
     border-radius: 20px;
     display: flex;
@@ -274,13 +278,13 @@ b{
 
 .area__2 .sits__1{
     position: absolute;
-    top: 30%;
-    left: 3%;
+    top: 22%;
+    left: 7%;
 }
 .area__2 .sits__3{
     position: absolute;
-    top: 30%;
-    right: 3%;
+    top: 22%;
+    right: 7%;
 }
 
 
@@ -301,14 +305,10 @@ b{
     align-items: center;
 }
 
-.area__2 .sits__2{
-    display: flex;
-}
-
 .area__2 .sits__2 li{
     background: #eff3f7;
-    width: 85px;
-    height: 85px;
+    width: 75px;
+    height: 75px;
     border-radius: 20px;
     margin: 2px 10px;
     
@@ -343,7 +343,7 @@ b{
 .area__3 .sits__1{
     position: absolute;
     left: 15%;
-    top: 25%;
+    top: 15%;
     display: flex;
     flex-direction: column;
 }
@@ -358,7 +358,7 @@ b{
 
 .area__3 .tables{
     position: absolute;
-    top: 25%;
+    top: 15%;
     right: 3%;
     display: flex;
     flex-direction: column;
@@ -376,6 +376,53 @@ b{
     background-color: #eff3f7;
 }
 
+.apply__box{
+    position: relative;
+    width: 35%;
+    height: 1100px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.3);
+    border: none;
+    outline: none;
+    top: 7%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.apply__inbox{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.apply__select__num{
+    border: 3px solid #5d2ae8;
+    width: 100%;
+    height: 40px;
+    padding-left: 42px;
+    border-radius: 20px;
+}
+
+.apply__select__num:focus{
+    outline: none;
+}
+
+.apply__select__class{
+    border: 3px solid #5d2ae8;
+    width: 100%;
+    height: 40px;
+    padding-left: 38px;
+    border-radius: 20px;
+}
+
+.apply__select__class:focus{
+    outline: none;
+}
+
 .res__sec2{
     width: 100%;
     height: 800px;
@@ -388,7 +435,7 @@ b{
 
 .res__space2{
     position: relative;
-    width: 90%;
+    width: 75%;
     height: 750px;
     background: #fff;
     border-radius: 20px;
@@ -403,6 +450,65 @@ b{
     justify-content: space-around;
     list-style: none;
     margin-top: 20px;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: bold;
+}
+
+/*Foot Section*/
+.foot {
+    width: 100%;
+    height: 270px;
+    margin-top: 20px;
+    background-color: #eff3f7;
+}
+
+.foot .foot__border {
+    background-color: #2d00f4;
+    height: 3px;
+    width: 100%;
+    opacity: 0.6;
+    border: 0;
+    margin: 0;
+}
+
+.gd__texth3 {
+    font-size: 35px;
+    text-align: center;
+    color: #3d2ae8;
+}
+
+.role__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 190px;
+}
+
+.role__list li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #5d2ae8;
+}
+
+.role__list h2 {
+    font-size: 20px;
+}
+
+.role__list span {
+    font-weight: bold;
+    margin-top: 10px;
+    color: #9d2ae8;
+}
+
+.front__info,
+.back__info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back__info li {
+    margin: 10px;
 }
