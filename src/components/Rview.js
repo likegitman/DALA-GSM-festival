@@ -70,16 +70,16 @@ function Rview() {
           alert("10교시는 17명까지입니다!");
           setUser(user - Number(selectedNum));
           setListCnt10(listCnt10 - Number(selectedNum));
-          userList10.pop();
-          // setUserList10(userList10.filter((user10)=>user10===name + "님 및 " + Number(selectedNum - 1) + "명"));
+          // userList10.pop();
+          setUserList10(userList10.filter((user10)=>user10===name + "님 및 " + Number(selectedNum - 1) + "명"));
           setUserList11(userList11);
         } else {
           if (listCnt10 === 17) {
             setListCnt10(17);
           } else {
             setListCnt10(listCnt10 + Number(selectedNum));
-            userList10.push(name + "님 및 " + Number(selectedNum - 1) + "명");
-            // setUserList10((currentArray) => [name + "님 및 " + Number(selectedNum - 1) + "명", ...userList10]);
+            // userList10.push(name + "님 및 " + Number(selectedNum - 1) + "명");
+            setUserList10((currentArray) => [name + "님 및 " + Number(selectedNum - 1) + "명", ...currentArray]);
             setUser(user + Number(selectedNum));
             setApply(false);
             setCanceled(true);
@@ -93,16 +93,16 @@ function Rview() {
           alert("11교시는 17명까지입니다!");
           setUser(user - Number(selectedNum));
           setListCnt11(listCnt11 - Number(selectedNum));
-          userList11.pop();
-          // setUserList11(userList11.filter((user11)=>user11===name + "님 및 " + Number(selectedNum - 1) + "명"));
+          // userList11.pop();
+          setUserList11(userList11.filter((user11)=>user11===name + "님 및 " + Number(selectedNum - 1) + "명"));
           setUserList10(userList10);
         } else {
           if (listCnt11 === 17) {
             setListCnt11(17);
           } else {
             setListCnt11(listCnt11 + Number(selectedNum));
-            userList11.push(name + "님 및 " + Number(selectedNum - 1) + "명");
-            // setUserList11((currentArray) => [name + "님 및 " + Number(selectedNum - 1) + "명", ...userList11]);
+            // userList11.push(name + "님 및 " + Number(selectedNum - 1) + "명");
+            setUserList11((currentArray) => [name + "님 및 " + Number(selectedNum - 1) + "명", ...currentArray]);
             setUser(user + Number(selectedNum));
             setApply(false);
             setCanceled(true);
@@ -118,14 +118,14 @@ function Rview() {
       setUser(0);
     } else {
       if (selectedClass === "10") {
-        userList10.pop();
-        // setUserList10(userList10.filter((user10)=>user10===name + "님 및 " + Number(selectedNum - 1) + "명"));
+        // userList10.pop();
+        setUserList10(userList10.filter((user10)=>user10===name + "님 및 " + Number(selectedNum - 1) + "명"));
         setUser(user - Number(selectedNum));
         setCanceled(false);
         setImpo(true);
       } else if (selectedClass === "11") {
-        userList11.pop();
-        // setUserList11(userList11.filter((user11)=>user11===name + "님 및 " + Number(selectedNum - 1) + "명"));
+        // userList11.pop();
+        setUserList11(userList11.filter((user11)=>user11===name + "님 및 " + Number(selectedNum - 1) + "명"));
         setUser(user - Number(selectedNum));
         setCanceled(false);
         setImpo(true);
@@ -152,8 +152,6 @@ function Rview() {
   //     setImpo(true);
   //   }
   // }, [time]);
-
-  localStorage.setItem("")
 
   return (
     <div>
